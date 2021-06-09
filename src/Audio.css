@@ -11,7 +11,6 @@
   margin-left: auto;
 }
 .audio__progress {
-  width: 1px;
   height: 80px;
   background-color: rgba(245, 241, 241, 0.5);
   transition: width .1s linear;
@@ -59,7 +58,7 @@
   border-top-width: 16px;
   border-bottom-width: 16px;
   border-left-width: 19px;
-  border-left-color: black
+  border-left-color: black;
 }
   
 .togglePlay:hover {
@@ -71,4 +70,7 @@
     margin-left: 0;
     border-width:0 7px;
     border-color: black;
+}
+button.togglePlay{
+  outline: none;
 }

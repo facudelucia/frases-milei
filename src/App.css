@@ -9,7 +9,7 @@
     background-color: rgba(35, 111, 182, 0.678);
     padding: 10px;
 }
-.app h2{
+h2{
     color: white;
     font-weight: bold;
     letter-spacing: 1px;
@@ -17,9 +17,11 @@
     width: 80%;
     margin-left: auto;
     margin-right: auto;
+    font-size:22px;
+    text-shadow: 4px 1px 3px rgba(150, 150, 150, 1);
 }
 @media screen and (max-width:620px){
-    .app h2{
+    h2{
         font-size: 18px;
     }
 }

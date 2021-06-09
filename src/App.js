@@ -1,97 +1,86 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import Audio from './Audio';
-import Audio3 from './Audio3';
-import Audio4 from './Audio4';
-import Audio5 from './Audio5';
-import Audio6 from './Audio6';
-import Audio7 from './Audio7';
-import Audio8 from './Audio8';
-import Audio9 from './Audio9';
-import Audio10 from './Audio10';
-import Audio11 from './Audio11';
-import Audio12 from './Audio12';
-import Audio13 from './Audio13';
-import Audio14 from './Audio14';
-import Audio15 from './Audio15';
-import Audio16 from './Audio16';
-import Audio17 from './Audio17';
-import Audio18 from './Audio18';
-import Audio19 from './Audio19';
-import Audio20 from './Audio20';
 import Footer from './Footer';
+import audio1 from './assets/audios/audio1.mp3'
+import audio3 from './assets/audios/audio3.mp3'
+import audio4 from './assets/audios/audio4.mp3'
+import audio5 from './assets/audios/audio5.mp3'
+import audio6 from './assets/audios/audio6.mp3'
+import audio7 from './assets/audios/audio7.mp3'
+import audio8 from './assets/audios/audio8.mp3'
+import audio9 from './assets/audios/audio9.mp3'
+import audio10 from './assets/audios/audio10.mp3'
+import audio11 from './assets/audios/audio11.mp3'
+import audio12 from './assets/audios/audio12.mp3'
+import audio13 from './assets/audios/audio13.mp3'
+import audio14 from './assets/audios/audio14.mp3'
+import audio15 from './assets/audios/audio15.mp3'
+import audio16 from './assets/audios/audio16.mp3'
+import audio17 from './assets/audios/audio17.mp3'
+import audio18 from './assets/audios/audio18.mp3'
+import audio19 from './assets/audios/audio19.mp3'
+import audio20 from './assets/audios/audio20.mp3'
 
 function App() {
   const [page, setPage] = useState(0)
-
-  const back = () =>{
-    if(page == 0){
+  const audios = [
+    { audio: audio1, title: "Sobre la redistribución del ingreso" },
+    { audio: audio3, title: "75 años tardariamos en ser Chile" },
+    { audio: audio4, title: "A vos te molesta la redistribución del ingreso" },
+    { audio: audio5, title: "Si supiera de economía no seria zurda" },
+    { audio: audio6, title: "Los zurdos son violentos" },
+    { audio: audio7, title: "Volvete a Cuba" },
+    { audio: audio8, title: "Te pago yo el pasaje para que vuelvas a Cuba" },
+    { audio: audio9, title: "Métanse lo políticamente correcto en el orto" },
+    { audio: audio10, title: "Por que Macri no es liberal" },
+    { audio: audio11, title: "Los políticos niegan la ley de la gravedad" },
+    { audio: audio12, title: "La grieta es entre los que laburan y los políticos" },
+    { audio: audio13, title: "Tenés un problema de soberbia" },
+    { audio: audio14, title: "Cuando estalle la crisis vamos a preguntarle a los infectologos qué hacer" },
+    { audio: audio15, title: "Le tenés alergia al excel" },
+    { audio: audio16, title: "Sobre la victoria del Bolsonaro" },
+    { audio: audio17, title: "El problema de Argentina es cultural" },
+    { audio: audio18, title: "La redistribución del ingreso es un acto violento" },
+    { audio: audio19, title: "El socialismo es el club de los penes cortos" },
+    { audio: audio20, title: "Argentina produce alimentos para 400 millones de habitantes" }]
+  const back = () => {
+    if (page === 0) {
       return
     }
     setPage(page - 1)
   }
-  const next = () =>{
-    if(page == 1){
+  const next = () => {
+    if (page === 1) {
       return
     }
-    setPage( page + 1)
+    setPage(page + 1)
   }
   return (
     <>
-    <div className="app">
-      <h1>Soundboard Javier Milei</h1>
-        {(page == 0) &&
-        <>
-          <h2>Sobre la redistribución del ingreso</h2>
-          <Audio />
-          <h2>75 años tardariamos en ser Chile</h2>
-          <Audio3 />
-          <h2>A vos te molesta la redistribución del ingreso</h2>
-          <Audio4 />
-          <h2>Si supiera de economía no seria zurda</h2>
-          <Audio5 />
-          <h2>Los zurdos son violentos</h2>
-          <Audio6 />
-          <h2>Volvete a Cuba</h2>
-          <Audio7 />
-          <h2>Te pago yo el pasaje para que vuelvas a Cuba</h2>
-          <Audio8 />
-          <h2>Métanse lo políticamente correcto en el orto</h2>
-          <Audio9 />
-        </>}
-        {(page==1) &&
-        <>
-          <h2>Por qué Macri no es liberal</h2>
-          <Audio10 />
-          <h2>Los políticos niegan la ley de la gravedad</h2>
-          <Audio11 />
-          <h2>La grieta es entre los que laburan y los políticos</h2>
-          <Audio12 />
-          <h2>Tenés un problema de soberbia</h2>
-          <Audio13 />
-          <h2>Cuando estalle la crisis vamos a preguntarle a los infectologos qué hacer</h2>
-          <Audio14 />
-          <h2>Le tenés alergia al excel</h2>
-          <Audio15 />
-          <h2>Sobre la victoria del Bolsonaro</h2>
-          <Audio16 />
-          <h2>El problema de Argentina es cultural</h2>
-          <Audio17 />
-          <h2>La redistribución del ingreso es un acto violento</h2>
-          <Audio18 />
-          <h2>El socialismo es el club de los penes cortos</h2>
-          <Audio19 />
-          <h2>Argentina produce alimentos para 400 millones de habitantes</h2>
-          <Audio20 />
-        </>
+      <div className="app">
+        <h1>Soundboard Javier Milei</h1>
+        {
+          page === 0
+          && audios.slice(0, 9).map((item, i) => (
+            <Audio audio={item.audio} idx={i} title={item.title} key={i} />
+          ))
         }
-        <div class="btn-group mb-5" role="group">
-          <button onClick={()=>back()} type="button" class="btn btn-secondary">Anterior</button>
-          <button onClick={()=>next()} type="button" class="btn btn-secondary">Siguiente</button>
+        {
+          page === 1
+          && audios.slice(10, 18).map((item, i) => (
+            <Audio audio={item.audio} idx={i} title={item.title} key={i} />
+          ))
+        }
+
+
+        <div className="btn-group mb-5" role="group">
+          <button onClick={() => back()} type="button" className="btn btn-secondary">Anterior</button>
+          <button onClick={() => next()} type="button" className="btn btn-secondary">Siguiente</button>
         </div>
         <Footer />
-    </div>
-    
+      </div>
+
     </>
   );
 }

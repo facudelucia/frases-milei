@@ -1,6 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "./Audio.css"
 function Audio({ audio, idx, title }) {
+
+  const [isPlaying, setIsPlaying] = useState(false)
+
   var timer;
   var percent = 0;
 
@@ -23,7 +26,7 @@ function Audio({ audio, idx, title }) {
     progress.style.width = percent + '%'
     startTimer(duration, element);
   }
-  
+
   const startTimer = (duration, element) => {
     if (percent < 100) {
       timer = setTimeout(() => { advance(duration, element) }, 100);
@@ -35,9 +38,11 @@ function Audio({ audio, idx, title }) {
     var audio = audios[idx]
     var btn = e.target;
     if (!audio.paused) {
+      setIsPlaying(false)
       btn.classList.remove('active');
       audio.pause();
     } else {
+      setIsPlaying(true)
       btn.classList.add('active');
       audio.play();
     }
@@ -50,8 +55,16 @@ function Audio({ audio, idx, title }) {
         <div className="audio__progress" id="progress">
         </div>
         <audio onPlaying={handlePlaying} onPause={handlePause} id="audio" src={audio}></audio>
-        <button className="togglePlay" onClick={(e) => togglePlay(e)}>Play/Pause</button>
-        <button className="downloadButton"><a href={audio} download><i className="fas fa-download"></i></a></button>
+        <button className="togglePlay" onClick={(e) => togglePlay(e)}>
+          {
+            isPlaying ? <i class="fas fa-pause"></i> : <i class="fas fa-play"></i>
+          }
+        </button>
+        <button className="downloadButton">
+          <a href={audio} download>
+            <i className="fas fa-download"></i>
+          </a>
+        </button>
       </div>
     </div>
   )

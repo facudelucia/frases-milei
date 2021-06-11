@@ -57,32 +57,30 @@ function App() {
     setPage(page + 1)
   }
   return (
-    <>
-      <div className="app">
-        <div className="app-title">
-          <h1>Soundboard Javier Milei</h1>
-        </div>
-        <div className="audios-section">
-          {
-            page === 0
-            && audios.slice(0, 9).map((item, i) => (
-              <Audio audio={item.audio} idx={i} title={item.title} key={i} />
-            ))
-          }
-          {
-            page === 1
-            && audios.slice(10, 18).map((item, i) => (
-              <Audio audio={item.audio} idx={i} title={item.title} key={i} />
-            ))
-          }
-        </div>
-        <div className="btn-group">
-          <button disabled={page === 0} onClick={() => back()} type="button" className="btn">Anterior</button>
-          <button disabled={page === 1} onClick={() => next()} type="button" className="btn">Siguiente</button>
-        </div>
-        <Footer />
+    <div className="app">
+      <div className="app-title">
+        <h1>Soundboard Javier Milei</h1>
       </div>
-    </>
+      <div className="audios-section">
+        {
+          page === 0
+          && audios.slice(0, 9).map((item, i) => (
+            <Audio audio={item.audio} idx={i} title={item.title} key={i} />
+          ))
+        }
+        {
+          page === 1
+          && audios.slice(10, 18).map((item, i) => (
+            <Audio audio={item.audio} idx={i} title={item.title} key={i} />
+          ))
+        }
+      </div>
+      <div className="btn-group">
+        <button disabled={page === 0} onClick={() => back()} type="button" className="btn">Anterior</button>
+        <button disabled={page === 1} onClick={() => next()} type="button" className="btn">Siguiente</button>
+      </div>
+      <Footer />
+    </div>
   );
 }
 

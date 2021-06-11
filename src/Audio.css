@@ -1,14 +1,12 @@
+.audio{
+  width: 80%;
+  margin: 5px auto;
+}
 .audio__container{
   background-color: rgba(0,0,0,0.3);
   height: 80px;
-  margin-bottom: 20px;
   border-radius: 20px;
-  width: 80%;
   display:flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-right: auto;
-  margin-left: auto;
 }
 .audio__progress {
   height: 80px;
@@ -17,8 +15,7 @@
   border-radius: 20px;
 }
 /*Play/Pause Button*/
-.togglePlay1{
-  position: relative;
+.downloadButton{
   background: white;
   width: 64px;
   height: 64px;
@@ -27,9 +24,17 @@
   justify-content: center;
   align-items: center;
   margin: 10px;
+  position: absolute;
+  right: 9%;
+  border: none;
+  font-size: 25px;
+  color: #4AA1F6;
 }
-.togglePlay1:hover{
+.downloadButton:hover{
   transform: scale(1.05);
+}
+.downloadButton a{
+  color: #4AA1F6;
 }
 .togglePlay {
   font:0/0 a;
@@ -45,6 +50,7 @@
   cursor: pointer;
   transition: transform 150ms ease-out;
   position: absolute;
+  border: none;
 } 
 .togglePlay::after {
   box-sizing: border-box;
@@ -73,4 +79,13 @@
 }
 button.togglePlay{
   outline: none;
+}
+
+@media screen and (max-width:576px){
+  .audio{
+    width: 90%;
+  }
+  .downloadButton{
+    right: 3%;
+  }
 }

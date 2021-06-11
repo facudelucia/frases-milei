@@ -1,6 +1,5 @@
 import React from 'react'
 import "./Audio.css"
-import GetAppIcon from '@material-ui/icons/GetApp';
 function Audio({ audio, idx, title }) {
   var timer;
   var percent = 0;
@@ -24,6 +23,7 @@ function Audio({ audio, idx, title }) {
     progress.style.width = percent + '%'
     startTimer(duration, element);
   }
+  
   const startTimer = (duration, element) => {
     if (percent < 100) {
       timer = setTimeout(() => { advance(duration, element) }, 100);
@@ -31,7 +31,6 @@ function Audio({ audio, idx, title }) {
   }
 
   const togglePlay = (e) => {
-    e = e || window.event;
     var audios = document.querySelectorAll("#audio");
     var audio = audios[idx]
     var btn = e.target;
@@ -45,18 +44,16 @@ function Audio({ audio, idx, title }) {
   }
 
   return (
-    <>
+    <div className="audio">
       <h2>{title}</h2>
-      <div className="audio">
       <div className="audio__container">
-        <div className="audio__progress" id="progress"></div>
+        <div className="audio__progress" id="progress">
+        </div>
         <audio onPlaying={handlePlaying} onPause={handlePause} id="audio" src={audio}></audio>
-        <button className="togglePlay" onClick={() => togglePlay()}>Play/Pause</button>
-        <button className="togglePlay1"><a href={audio} download><GetAppIcon /></a></button>
+        <button className="togglePlay" onClick={(e) => togglePlay(e)}>Play/Pause</button>
+        <button className="downloadButton"><a href={audio} download><i className="fas fa-download"></i></a></button>
       </div>
     </div>
-    </>
-    
   )
 }
 
